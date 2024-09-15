@@ -1,0 +1,10 @@
+.toast {
+    width: 400px !important; /* Set custom width */
+    height: 150px !important; /* Set custom height */
+    line-height: 1.5; /* Adjust text line height */
+    padding: 20px; /* Add padding to fit the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+  }
