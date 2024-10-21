@@ -1,0 +1,13 @@
+.div_header {
+    display: flex;
+    justify-content: space-between; /* This moves the label to the right */
+    align-items: center; /* This vertically centers the elements */
+}
+
+.label_concluido {
+    margin-left: auto; /* This pushes the label to the right */
+}
+
+input {
+    cursor: pointer; /* Change the cursor when hovering over the checkbox */
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 import { useNavigate  } from "react-router-dom";
+import Styles from '../Css/Login.module.css';
 
 const LoginPage = () => {
     const [user, setUser] = useState("");
@@ -34,29 +35,27 @@ const LoginPage = () => {
     }
    
     return (
-        <div style={{ marginTop: "50px" }}>
-            <div className="col s12 m6 l4">
-                <div className="card">
-                    <div className="card-content">
-                        <h4 className="center-align" style={{ marginBottom: "30px" }}>Login</h4>
-                        <form onSubmit={submit}>
-                            <div className="input-field">
-                                <i className="material-icons prefix">person</i>
-                                <input required id="email" type="email" className="validate" onChange={(e) => setUser(e.target.value)} />
-                                <label htmlFor="email">Usuário</label>
-                            </div>
-                            <div className="input-field">
-                                <i className="material-icons prefix">lock</i>
-                                <input required id="password" type="password" className="validate" onChange={(e) => setSenha(e.target.value)} />
-                                <label htmlFor="password">Senha</label>
-                            </div>
-                            <div className="center-align" style={{ marginTop: "20px" }}>
-                                <button className="btn-large " type="submit" style={{ width: "100%", backgroundColor: "#00796B" }}>
-                                Login
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+        <div className={`${Styles.container} row`}>
+            <div className={`${Styles.card} card col s12`}>
+                <div className="card-content">
+                    <h4 className="center-align" style={{ marginBottom: "30px" }}>Login</h4>
+                    <form onSubmit={submit}>
+                        <div className="input-field">
+                            <i className="material-icons prefix">person</i>
+                            <input required id="email" type="email" className="validate" onChange={(e) => setUser(e.target.value)} />
+                            <label htmlFor="email">Usuário</label>
+                        </div>
+                        <div className="input-field">
+                            <i className="material-icons prefix">lock</i>
+                            <input required id="password" type="password" className="validate" onChange={(e) => setSenha(e.target.value)} />
+                            <label htmlFor="password">Senha</label>
+                        </div>
+                        <div className="center-align" style={{ marginTop: "20px" }}>
+                            <button className="btn-large " type="submit" style={{ width: "100%", backgroundColor: "#00796B" }}>
+                            Login
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

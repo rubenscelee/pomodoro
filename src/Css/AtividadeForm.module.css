@@ -1,0 +1,21 @@
+.div_form { 
+    justify-content: center; /* Horizontal centering */
+    align-items: center;     /* Vertical centering */
+    height: 100vh;           /* Full viewport height */
+    background-color: rgb(255, 255, 255); /* Optional background color */
+    place-items: center;
+    color: black;
+    width: 40%;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+.button_salvar {
+    background-color: #05b160bd;
+    margin-top: 50px;
+}
+
+.button_salvar:hover {
+    background-color: #6a9782bd;
+}
+

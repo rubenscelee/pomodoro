@@ -1,6 +1,6 @@
 import Timer from "../Forms/Timer";
 import Navbar from "./Navbar";
-import FormSettingsModel from "./FormSettingsModel";
+import FormSettingsModel from "./FormSettingsModal";
 import { useState } from "react";
 
 const Container = () => {

@@ -1,0 +1,12 @@
+.container {
+    margin-top: 25px;
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    width: 35%;
+}
+
+.card {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+}

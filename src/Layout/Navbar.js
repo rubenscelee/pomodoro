@@ -1,30 +1,54 @@
 import M from "materialize-css";
 import { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import {isLoggedIn} from '../utils/auth';
+import FormSettingsModal from './FormSettingsModal';
+import Styles from '../Css/Navbar.module.css';
+import AtividadeForm from './AtividadeForm';
+
 
 const Navbar = () => {
+    const [pomodoro, setPomodoro] = useState(() => {
+        return localStorage.getItem('pomodoro') ? Number(localStorage.getItem('pomodoro')) : 25;
+    });
+    const [descansoCurto, setDescansoCurto] = useState(() => {
+        return localStorage.getItem('descansoCurto') ? Number(localStorage.getItem('descansoCurto')) : 5;
+    });
+    const [descansoLongo, setDescansoLongo] = useState(() => {
+        return localStorage.getItem('descansoLongo') ? Number(localStorage.getItem('descansoLongo')) : 10;
+    });
+    const [intervaloDescansoLongo, setIntervaloDescansoLongo] = useState(() => {
+        return localStorage.getItem('intervaloDescansoLongo') ? Number(localStorage.getItem('intervaloDescansoLongo')) : 4;
+    });
+
+    useEffect(() => {
+        localStorage.setItem('pomodoro', pomodoro);
+        localStorage.setItem('descansoCurto', descansoCurto);
+        localStorage.setItem('descansoLongo', descansoLongo);
+        localStorage.setItem('intervaloDescansoLongo', intervaloDescansoLongo);
+    }, [pomodoro, descansoCurto, descansoLongo, intervaloDescansoLongo]);
 
     const [token, setToken] = useState(localStorage.getItem('token'))
-    
-    useEffect(() => {
-        const modalElems = document.querySelectorAll('.modal');
-        M.Modal.init(modalElems, {});
-
-      }, []);
     
     const logout = () => {
         localStorage.removeItem('token');
         window.location.reload();
     }
-      
+
+    useEffect(() => {
+        const modals = document.querySelectorAll('.modal');
+        M.Modal.init(modals, {});
+    }, []);
+    
     return (
-        <nav>
-            <div className="nav-wrapper col s12">
-                <Link className="brand-logo" to="/home"><i className="material-icons">cloud</i></Link>
-                <ul className="right hide-on-med-and-down">
+        <nav className={Styles.navbar}>
+            <div className={`nav-wrapper col s12`}>
+                <Link className="brand-logo left" to="/home">Pomodoro</Link>
+                <ul className="right">
                     <li>
-                        <a data-target="!#"  className="modal-trigger material-icons"><i className="material-icons">settings</i></a>
+                        <a data-target="atividadeForm"  className="modal-trigger material-icons"><i className="material-icons">add</i></a>
+                    </li>
+                    <li>
+                        <a data-target="modal1"  className="modal-trigger material-icons"><i className="material-icons">settings</i></a>
                     </li>
                     <li>
                         {token ? 
@@ -34,6 +58,16 @@ const Navbar = () => {
                 </ul>
                 <Outlet />
             </div>
+            <AtividadeForm/>
+            <FormSettingsModal 
+                pomodoro={pomodoro} 
+                descansoCurto={descansoCurto} 
+                descansoLongo={descansoLongo} 
+                intervaloDescansoLongo={intervaloDescansoLongo} 
+                setPomodoro={setPomodoro} 
+                setDescansoCurto={setDescansoCurto} 
+                setDescansoLongo={setDescansoLongo} 
+                setIntervaloDescansoLongo={setIntervaloDescansoLongo}/>
         </nav>
     );
 }

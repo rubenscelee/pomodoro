@@ -6,8 +6,11 @@ import LoginPage from './Pages/LoginPage';
 import HomePage from './Pages/HomePage';
 import NoPage from './Pages/NoPage';
 import Navbar from './Layout/Navbar';
+import AtividadePage from './Pages/AtividadePage';
+import FormSettingsModal from './Layout/FormSettingsModal';
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
@@ -16,6 +19,7 @@ function App() {
           <Routes>
                 <Route index element={<HomePage />} />
                 <Route path="home" element={<HomePage />} />
+                <Route path="atividadePage" element={<AtividadePage />} />
                 <Route path="login" element={<LoginPage />} />
                 {/* <Route path="*" element={<NoPage />} /> */}
             </Routes>
