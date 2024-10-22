@@ -6,6 +6,9 @@ const Atividades = () => {
     const [items, setItems] = useState([]); // State to store items
     const [loading, setLoading] = useState(true); // Loading state to show a loader or message while data is being fetched
     const [error, setError] = useState(null); // State to handle errors
+    const [descricao, setDescricao] = useState('');
+    const [titulo, setTitulo] = useState('');
+    const [qntPomodoros, setQntPomodoros] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,6 +44,10 @@ const Atividades = () => {
         M.Collapsible.init(collapsible, {});
     }, [items]);
 
+    const salvarAlteracao = () => {
+        console.log("teset")
+    };
+
     const handleCheckboxChange = (id) => {
         
         setItems((prevItems) =>
@@ -59,8 +66,8 @@ const Atividades = () => {
     }
 
     return (
-        <div>
-            <ul className='collapsible popout'>
+        <div className={`${Styles.div_container}  center-align col s6`}>
+            <ul className='collapsible popout col s12'>
                 {items.map((item) => (
                     <li key={item.id}>
                         <div className={`${Styles.div_header} collapsible-header `}>
@@ -76,10 +83,40 @@ const Atividades = () => {
                                 <span>Concluído?</span>
                             </label>
                         </div>
-                        <div className="collapsible-body">
-                            <p>Descrição: {item.descricao}</p> 
-                            <p>Quantidade de Pomodoros: {item.qntPomodoros}</p>
-                            <p>Data: {new Date(item.dataAtividade).toLocaleDateString()}</p>
+                        <div className={`${Styles.div_body} collapsible-body left-align`}>
+                            <label htmlFor="titulo">Título</label>
+                            <input
+                                    id="titulo"
+                                    type="text"
+                                    value={item.titulo}
+                                    onChange={(e) => setTitulo(e.target.value)} // Track description changes
+                            />
+                            <label htmlFor="descricao">Descrição</label>
+                            <input
+                                    id="descricao"
+                                    type="text"
+                                    value={item.descricao}
+                                    onChange={(e) => setDescricao(e.target.value)} // Track description changes
+                            />
+                            <label htmlFor="qntPomodoros">Pomodoro</label>
+                            <input 
+                                min={0} 
+                                value={qntPomodoros} // Set the current value of qntPomodoros
+                                onChange={(e) => setQntPomodoros(e.target.value)} // Update state when the value changes
+                                id="qntPomodoros" 
+                                type="number" 
+                            />
+                            <label htmlFor="data">Data</label>
+                            <input 
+                                id='data'
+                                type="date"
+                                value={new Date(item.dataAtividade).toISOString().split('T')[0]}
+                            />
+                            <div className="left-right">
+                                <button onClick={salvarAlteracao} type="button" className={`btn`}>
+                                    Salvar
+                                </button>
+                            </div>
                         </div>
                     </li>
                 ))}

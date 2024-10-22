@@ -3,6 +3,7 @@ import Input from '../FormComponents/Input';
 import Button from '../FormComponents/Button';
 import Label from '../FormComponents/Label';
 import M from 'materialize-css';
+import Styles from '../Css/Timer.module.css';
 
 /**
  * 
@@ -90,59 +91,54 @@ const Timer = ({pomodoro, descansoCurto, descansoLongo}) => {
     };
 
     return (
-        <div>
-            <div className="col s6 m5 center-align">
-                <div className="card blue-grey darken-1">
-                    <ul ref={tabsRef} className="tabs tabs-fixed-width blue-grey darken-1">
-                        <li className="tab col s4"><a href="#pomodoro">Pomodoro</a></li>
-                        <li className="tab col s4"><a href="#descansoCurto">Descanso Curto</a></li>
-                        <li className="tab col s4"><a href="#descansoLongo">Descanso Longo</a></li>
-                    </ul>
-
-                    <div id="pomodoro" className="card-content white-text">
-                        <h1>
-                            {minutos < 10 ? "0" + minutos : minutos}:
-                            {segundos < 10 ? "0" + segundos : !timerIniciadoPrimeiraVez ? "00" : segundos}
-                        </h1>
-                        <div className="card-action">
-                            {timerIniciado ? (
-                                <Button text={"Pausar"} handleOnclick={pararPomodoro} />
-                            ) : (
-                                <Button handleOnclick={iniciarPomodoro} text={"Iniciar"} />
-                            )}
-                        </div>
+        <div className={`${Styles.div_container} center-align col s4`}>
+            <div className={`${Styles.card} card blue-grey darken-1 col s12`}>
+                <ul ref={tabsRef} className="tabs tabs-fixed-width blue-grey darken-1">
+                    <li className="tab col s4"><a href="#pomodoro">Pomodoro</a></li>
+                    <li className="tab col s4"><a href="#descansoCurto">Descanso Curto</a></li>
+                    <li className="tab col s4"><a href="#descansoLongo">Descanso Longo</a></li>
+                </ul>
+                <div id="pomodoro" className="card-content white-text">
+                    <h1>
+                        {minutos < 10 ? "0" + minutos : minutos}:
+                        {segundos < 10 ? "0" + segundos : !timerIniciadoPrimeiraVez ? "00" : segundos}
+                    </h1>
+                    <div className="card-action">
+                        {timerIniciado ? (
+                            <Button text={"Pausar"} handleOnclick={pararPomodoro} />
+                        ) : (
+                            <Button handleOnclick={iniciarPomodoro} text={"Iniciar"} />
+                        )}
                     </div>
-
-                    <div id="descansoCurto" className="card-content white-text">
-                        <h1>
-                            {descansoCurto < 10 ? "0" + descansoCurto : descansoCurto}:
-                            {segundos < 10 ? "0" + segundos : !timerIniciadoPrimeiraVez ? "00" : segundos}
-                        </h1>
-                        <div className="card-action">
-                            {timerIniciado ? (
-                                <Button text={"Pausar"} handleOnclick={pararDescansoCurto} />
-                            ) : (
-                                <Button handleOnclick={iniciarDescansoCurto} text={"Iniciar"} />
-                            )}
-                        </div>
+                </div>
+                <div id="descansoCurto" className="card-content white-text">
+                    <h1>
+                        {descansoCurto < 10 ? "0" + descansoCurto : descansoCurto}:
+                        {segundos < 10 ? "0" + segundos : !timerIniciadoPrimeiraVez ? "00" : segundos}
+                    </h1>
+                    <div className="card-action">
+                        {timerIniciado ? (
+                            <Button text={"Pausar"} handleOnclick={pararDescansoCurto} />
+                        ) : (
+                            <Button handleOnclick={iniciarDescansoCurto} text={"Iniciar"} />
+                        )}
                     </div>
-
-                    <div id="descansoLongo" className="card-content white-text">
-                        <h1>
-                            {descansoLongo < 10 ? "0" + descansoLongo : descansoLongo}:
-                            {segundos < 10 ? "0" + segundos : !timerIniciadoPrimeiraVez ? "00" : segundos}
-                        </h1>
-                        <div className="card-action">
-                            {timerIniciado ? (
-                                <Button text={"Pausar"} handleOnclick={pararDescansoLongo} />
-                            ) : (
-                                <Button handleOnclick={iniciarDescansoLongo} text={"Iniciar"} />
-                            )}
-                        </div>
+                </div>
+                <div id="descansoLongo" className="card-content white-text">
+                    <h1>
+                        {descansoLongo < 10 ? "0" + descansoLongo : descansoLongo}:
+                        {segundos < 10 ? "0" + segundos : !timerIniciadoPrimeiraVez ? "00" : segundos}
+                    </h1>
+                    <div className="card-action">
+                        {timerIniciado ? (
+                            <Button text={"Pausar"} handleOnclick={pararDescansoLongo} />
+                        ) : (
+                            <Button handleOnclick={iniciarDescansoLongo} text={"Iniciar"} />
+                        )}
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
     );
 }
 

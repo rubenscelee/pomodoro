@@ -10,3 +10,12 @@ h6 {
   font-weight: 1000;
   font-style: normal;
 }
+
+.button {
+  background-color: #05b160bd;
+  margin-top: 50px;
+}
+
+.button:hover {
+  background-color: #6a9782bd;
+}

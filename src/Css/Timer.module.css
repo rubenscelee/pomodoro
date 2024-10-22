@@ -1,0 +1,14 @@
+.div_container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: flex-start; /* Aligns the card at the top */
+    height: 100vh; /* Full screen height */
+    width: 100%;
+    padding-top: 50px; /* Adjust the space from the top */
+    border: 2px solid black;
+}
+
+.card {
+    padding: 20px; /* Adjust padding if necessary */
+    width: 100%; /* Adjust as needed for responsiveness */
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import Timer from '../Forms/Timer';
 import { useState, useEffect } from 'react';
 import Atividades from '../Forms/Atividades';
+import Styles from '../Css/Home.module.css';
 
 const HomePage = () => {
     const [pomodoro, setPomodoro] = useState(() => {
@@ -18,7 +19,7 @@ const HomePage = () => {
     });
     
     return (
-        <div className="row">
+        <div className={`${Styles.div_container} row`}>
             <Timer pomodoro={pomodoro} descansoCurto={descansoCurto} descansoLongo={descansoLongo}/>
             <Atividades/>
         </div>

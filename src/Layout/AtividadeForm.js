@@ -11,6 +11,7 @@ const AtividadeForm = () => {
     const [token, setToken] = useState(localStorage.getItem('token'))
 
     const submit = (e) => {
+        debugger;
         e.preventDefault();
         
         let atividade = {};
@@ -24,14 +25,14 @@ const AtividadeForm = () => {
             headers: {'Content-Type': 'application/json', 'Cache-Control': 'no-cache', 'Authorization': `Bearer ${token}`}, 
             body: JSON.stringify(atividade)
         })
-        .then((res) => res.json())
+        .then(window.location.reload())
         .catch(e => console.log(e))
     };
 
     return (
         <div>
             <div id="atividadeForm" className={`${Styles.div_form} row modal hoverable z-depth-5 `}>
-                <form class="col s12 ">
+                <form class="col s12" onSubmit={submit}>
                     <div className="col s12">
                         <h6 className="center-align">Adicionar Atividade</h6>
                     </div>
